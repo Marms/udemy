@@ -2,7 +2,7 @@ import {Input, Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { ShoppingListService } from '../../shopping-list/shopping-list.service';
 import { RecipeService } from '../recipe.service';
-import { Route, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Data, Params } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,19 +10,26 @@ import { Route, Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-//  @Input('recipeSelected') recipe: Recipe;
-  
-  constructor(private recSvc: RecipeService) { }
+  recipe: Recipe;
+  id: number;
+
+  constructor(private recSvc: RecipeService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-   var name = "te"; 
-  //var name: string = this.router.snapshot.params['name'];
-    console.log(name);
-    //this.recipe = this.recSvc.getRecipe(name);
-    console.log('test');
+    this.activatedRoute.params.subscribe(
+      (data: Params) => {
+        this.id = +data['id'];
+        console.log(this.id)
+        this.recipe = this.recSvc.getRecipe(this.id); 
+      }
+    );
   }
 
   onAddToShoppingList() {
-    //this.recSvc.addToShoppingList(this.recipe.ingredients);
+    this.recSvc.addToShoppingList(this.recipe.ingredients);
+  }
+
+  onEdit() {
+    this.router.navigate(['edit'], {relativeTo : this.activatedRoute} );
   }
 }
