@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class ShoppingListComponent implements OnInit , OnDestroy{
   ingredients:Ingredient[] = this.shopSvc.getIngredients();
   ingredient: Ingredient = new Ingredient('',0);
-   ingredientSubscription : Subscription;
+  ingredientSubscription : Subscription;
   constructor(private shopSvc : ShoppingListService) { }
 
   ngOnInit() {
@@ -24,12 +24,15 @@ export class ShoppingListComponent implements OnInit , OnDestroy{
     );
   }
 
+  onEditItem(index : number) {
+    this.shopSvc.startedEditing.next(index);
+  }
+  
   ngOnDestroy() {
     this.ingredientSubscription.unsubscribe();
   }
 
   onClickIngredientItem(ingredient) {
-    console.log('ingredient click ' + ingredient.name );
     this.ingredient = ingredient;
   }
 }

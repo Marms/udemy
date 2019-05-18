@@ -19,10 +19,15 @@ export class RecipeDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (data: Params) => {
         this.id = +data['id'];
-        console.log(this.id)
-        this.recipe = this.recSvc.getRecipe(this.id); 
+        this.recipe = this.recSvc.getRecipe(this.id);
       }
     );
+  }
+
+  onDeleteRecipe() {
+    this.recSvc.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
+
   }
 
   onAddToShoppingList() {
