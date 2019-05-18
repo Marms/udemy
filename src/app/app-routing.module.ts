@@ -5,8 +5,6 @@ import {SignupComponent} from './auth/signup/signup.component';
 import {SigninComponent} from './auth/signin/signin.component';
 
 const routes: Routes = [
-
-  //{path: "recipes/:name", component: RecipeDetailComponent},
   {path: 'shopping-list', component: ShoppingListComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
