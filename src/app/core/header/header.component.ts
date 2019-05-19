@@ -34,4 +34,9 @@ export class HeaderComponent {
   onLogOut() {
     this.authSvc.logOut();
   }
+
+  isAuthenticated() {
+    return this.authSvc.isAuthentificated();
+  }
+
 }
