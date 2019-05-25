@@ -17,20 +17,14 @@ export class DataStorageService {
   }
 
   saveRecipes() {
-    const tk: string = this.authSvc.getToken();
-    return this.httpClient.put(this.url + 'recipes.json', this.recipeSvc.getRecipes(),
-      {
-        params: new HttpParams().set('auth', tk)
-      });
+    return this.httpClient.put(this.url + 'recipes.json', this.recipeSvc.getRecipes());
   }
 
   getRecipes() {
-    const tk: string = this.authSvc.getToken();
     this.httpClient.get<Recipe[]>(this.url + 'recipes.json'
       , {
         observe: 'body', // response...
-        responseType: 'json', // text...
-        params: new HttpParams().set('auth', tk)
+        responseType: 'json'// text...
       }
     )
       .map((recipes: Recipe[]) => {
