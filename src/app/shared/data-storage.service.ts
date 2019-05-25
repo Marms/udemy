@@ -3,7 +3,7 @@ import {RecipeService} from '../recipes/recipe.service';
 import {Recipe} from '../recipes/recipe.model';
 import 'rxjs/add/operator/map';
 import {AuthService} from '../auth/auth.service';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class DataStorageService {
@@ -18,12 +18,21 @@ export class DataStorageService {
 
   saveRecipes() {
     const tk: string = this.authSvc.getToken();
-    return this.httpClient.put(this.url + 'recipes.json?auth=' + tk, this.recipeSvc.getRecipes());
+    return this.httpClient.put(this.url + 'recipes.json', this.recipeSvc.getRecipes(),
+      {
+        params: new HttpParams().set('auth', tk)
+      });
   }
 
   getRecipes() {
     const tk: string = this.authSvc.getToken();
-    this.httpClient.get<Recipe[]>(this.url + 'recipes.json?auth=' + tk)
+    this.httpClient.get<Recipe[]>(this.url + 'recipes.json'
+      , {
+        observe: 'body', // response...
+        responseType: 'json', // text...
+        params: new HttpParams().set('auth', tk)
+      }
+    )
       .map((recipes: Recipe[]) => {
         for (const recipe of recipes) {
           if (!recipe['ingredients']) {
