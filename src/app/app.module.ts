@@ -25,7 +25,7 @@ import {BsDropdownModule} from 'ngx-bootstrap';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    StoreModule.forRoot({shoppingList: shoppingListReducers}),
+      StoreModule.forRoot({shoppingList: shoppingListReducers}),
     BsDropdownModule.forRoot()
   ],
   providers: [],

@@ -3,9 +3,42 @@ import {Ingredient} from '../../shared/ingredient.model';
 
 
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
+export const MAJ_INGREDIENT = 'MAJ_INGREDIENT';
+export const DEL_INGREDIENT = 'DEL_INGREDIENT';
+export const ADD_INGREDIENTS = 'ADD_INGREDIENTS';
+export const START_EDIT = 'START_EDIT';
+export const STOP_EDIT = 'STOP_EDIT';
 
 export class AddIngredient implements Action {
   readonly type = ADD_INGREDIENT;
-  payload: Ingredient;
+
+  constructor(public payload: Ingredient) {
+  }
 }
-export type ShoppingListActions = AddIngredient;
+export class UpdateIngredient implements Action {
+  readonly type = MAJ_INGREDIENT;
+
+  constructor(public payload: {ingredient: Ingredient}) {
+  }
+}
+
+export class DeleteIngredient implements Action {
+  readonly type = DEL_INGREDIENT;
+}
+
+export class AddIngredients implements Action {
+  readonly type = ADD_INGREDIENTS;
+
+  constructor(public payload: Ingredient[]) {}
+}
+
+export class StartEdit implements Action {
+  readonly type = START_EDIT;
+  constructor(public payload: {id: number}) {}
+}
+
+
+export class StopEdit implements Action {
+  readonly type = STOP_EDIT;
+}
+export type ShoppingListActions = AddIngredient | UpdateIngredient | DeleteIngredient | AddIngredients | StartEdit | StopEdit;
