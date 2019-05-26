@@ -11,6 +11,7 @@ import {AuthGuard} from '../auth/auth-guard';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from '../shared/auth.interceptor';
 import {LoggingInterceptor} from '../shared/logging.interceptor';
+import {BsDropdownModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import {LoggingInterceptor} from '../shared/logging.interceptor';
   ],
   imports: [
     SharedModule,
-    AppRoutingModule // pour pouvoir effectuer des redirection
+    AppRoutingModule, // pour pouvoir effectuer des redirection
+    BsDropdownModule
+
   ],
   exports: [
     AppRoutingModule,

@@ -69,12 +69,12 @@ export class RecipeEditComponent implements OnInit {
   }
 
   getIngredients(recipe: Recipe) : FormArray{
-    let formArray = new FormArray([]);
-    for (let ingredients of recipe.ingredients) {
+    const formArray = new FormArray([]);
+    for (const ingredients of recipe.ingredients) {
       formArray.push(new FormGroup({
         'name': new FormControl(ingredients.name, [Validators.required]),
         'amount': new FormControl(ingredients.amount, [Validators.required, Validators.pattern(/^[0-9]/)])
-      }))
+      }));
     }
     return formArray;
   }

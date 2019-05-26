@@ -27,7 +27,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.ingredientSubscription.unsubscribe();
+ //   this.ingredientSubscription.unsubscribe();
   }
 
   onClickIngredientItem(ingredient) {

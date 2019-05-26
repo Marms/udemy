@@ -1,8 +1,8 @@
-import {EventEmitter, Output, Input, Component, OnInit } from '@angular/core';
-import { Recipe } from '../../recipe.model'
-import { RecipeService } from '../../recipe.service';
+import {EventEmitter, Output, Input, Component, OnInit} from '@angular/core';
+import {Recipe} from '../../recipe.model';
+import {RecipeService} from '../../recipe.service';
 
-import {Router,ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -16,14 +16,15 @@ export class RecipeItemComponent implements OnInit {
   @Input() index: number;
 
   constructor(private recipeSvc: RecipeService,
-      private router: Router,
-      private route: ActivatedRoute) { 
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-   /* create(recipe: Recipe) {
-      console.log(recipe)
-      this.recipe = recipe;
-    }*/
+  /* create(recipe: Recipe) {
+     console.log(recipe)
+     this.recipe = recipe;
+   }*/
 }

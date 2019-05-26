@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 import {Ingredient} from '../../shared/ingredient.model';
 import * as ShoppingListAction from './shopping-list.actions';
 
-const initialState = {ingredients: []}; // etat par defaut
+const initialState = {ingredients: [new Ingredient('name', 12), new Ingredient('test', 1)]}; // etat par defaut
 
 
 export function shoppingListReducers(state = initialState, action: ShoppingListAction.ShoppingListActions) {

@@ -12,18 +12,18 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div appDropdown class="btn-group">
-      <button type="button"  
+    <div dropdown class="btn-group">
+      <button type="button" dropdownToggle
       class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a style="cursor: pointer" (click)="onAddToShoppingList()">Add Ingredients to shopping List</a></li>
-        <li><a style="cursor: pointer" (click)="onEdit()">Edit Recipe</a></li>
-        <li><a style="cursor: pointer" (click)="onDeleteRecipe()">Delete Recipe</a></li>
+      <ul *dropdownMenu class="dropdown-menu">
+        <li role="menuitem"><a class="dropdown-item" style="cursor: pointer" (click)="onAddToShoppingList()">Add Ingredients to shopping List</a></li>
+        <li role="menuitem"><a class="dropdown-item"  style="cursor: pointer" (click)="onEdit()">Edit Recipe</a></li>
+        <li role="menuitem"><a class="dropdown-item"  style="cursor: pointer" (click)="onDeleteRecipe()">Delete Recipe</a></li>
       </ul>
-
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12">
     {{recipe.description}}
