@@ -9,8 +9,8 @@ import {ShoppingModule} from './shopping-list/shopping.module';
 import {AuthModule} from './auth/auth.module';
 import {CoreModule} from './core/core.module';
 import {HttpClientModule} from '@angular/common/http';
-import {shoppingListReducers} from './shopping-list/store/shopping-list.reducers';
 import {BsDropdownModule} from 'ngx-bootstrap';
+import {reducers} from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import {BsDropdownModule} from 'ngx-bootstrap';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-      StoreModule.forRoot({shoppingList: shoppingListReducers}),
+      StoreModule.forRoot(reducers),
     BsDropdownModule.forRoot()
   ],
   providers: [],

@@ -1,13 +1,25 @@
+import * as AuthActions from './auth.action';
+
 export interface State {
   token: string;
-  authentificated: boolean;
+  authenticated: boolean;
 }
 
 const initialState: State = {
   token: null,
-  authentificated: false
+  authenticated: false
 };
 
 export function AuthReducer(state = initialState, action) {
-
+  switch (action.type) {
+    case AuthActions.SIGNUP:
+    case AuthActions.SIGNIN:
+      return {...state, authenticated: true};
+    case AuthActions.LOGOUT:
+      return {...state, authenticated: false};
+    case AuthActions.SET_TOKEN:
+      return {...state, token: action.payload};
+    default:
+      return state;
+  }
 }

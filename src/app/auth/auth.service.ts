@@ -1,53 +1,53 @@
 import * as firebase from 'firebase';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import * as fromApp from '../store/app.reducer';
+import * as fromAuth from '../auth/store/auth.action';
 
 @Injectable()
 export class AuthService {
-  token: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private store: Store<fromApp.AppState>) {
+  }
 
   signupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(
+        (user) => {
+          this.store.dispatch(new fromAuth.SignUp());
+          this.getToken();
+        }
+      )
       .catch(
         error => console.log(error)
       );
   }
 
   signinUser(email: string, password: string) {
-   const res = firebase.auth().signInWithEmailAndPassword(email, password)
-     .then(
-       response => {
-         this.router.navigate(['/']);
-         this.getToken();
-       }
-     )
+    const res = firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(
+        response => {
+          this.store.dispatch(new fromAuth.SignIn());
+
+          this.router.navigate(['/']);
+
+          this.getToken();        }
+      )
       .catch(
         error => console.log(error)
       );
-
-   console.log(res);
   }
 
-  /**
-   * On ne peut pas utiliser cette methode pour retourner un token
-   * car elle retourne une promise et est donc executer de manière asynchrone
-   */
-  getToken() {
+  private getToken() {
     firebase.auth().currentUser.getIdToken()
       .then(
-        (token: string) => this.token = token
-      );
-    // il y a une possibilite que le token soit expire
-    return this.token;
+        (token: string) => this.store.dispatch(new fromAuth.SetToken(token)));
   }
 
   logOut() {
     firebase.auth().signOut();
-    this.token = null;
-  }
-  isAuthentificated() {
-    return this.token != null;
+    this.store.dispatch(new fromAuth.Logout());
   }
 }
