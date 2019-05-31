@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import * as fromApp from '../store/app.reducer';
-import * as fromAuth from '../auth/store/auth.action';
+import * as fromAuth from './store/auth.actions';
 
 @Injectable()
 export class AuthService {

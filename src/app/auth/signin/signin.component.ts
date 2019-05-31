@@ -12,8 +12,8 @@ export class SigninComponent implements OnInit {
   constructor(private  authSvc: AuthService) { }
 
   ngOnInit() {
+    this.authSvc.signinUser('test@test.fr', 'test59');
   }
-
   onSubmit(f: NgForm) {
     const password = f.value.password;
     const email = f.value.email;
