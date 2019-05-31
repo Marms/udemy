@@ -30,9 +30,7 @@ export class AuthService {
       .then(
         response => {
           this.store.dispatch(new fromAuth.SignIn());
-
           this.router.navigate(['/']);
-
           this.getToken();        }
       )
       .catch(
