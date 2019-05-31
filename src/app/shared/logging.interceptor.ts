@@ -2,12 +2,11 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/do';
 import {Injectable} from '@angular/core';
-import {AuthService} from '../auth/auth.service';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {
+  constructor() {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

@@ -5,7 +5,6 @@ import {AppRoutingModule} from '../app-routing.module';
 import {NgModule} from '@angular/core';
 import {RecipeService} from '../recipes/recipe.service';
 import {DataStorageService} from '../shared/data-storage.service';
-import {AuthService} from '../auth/auth.service';
 import {AuthGuard} from '../auth/auth-guard';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from '../shared/auth.interceptor';
@@ -28,7 +27,7 @@ import {BsDropdownModule} from 'ngx-bootstrap';
     HeaderComponent
   ],
   providers: [
-     RecipeService, DataStorageService, AuthService, AuthGuard,
+     RecipeService, DataStorageService, AuthGuard,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}
 

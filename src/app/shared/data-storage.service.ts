@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {RecipeService} from '../recipes/recipe.service';
 import {Recipe} from '../recipes/recipe.model';
 import 'rxjs/add/operator/map';
-import {AuthService} from '../auth/auth.service';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class DataStorageService {
@@ -11,8 +10,7 @@ export class DataStorageService {
   url: string;
 
   constructor(private httpClient: HttpClient,
-              private recipeSvc: RecipeService,
-              private authSvc: AuthService) {
+              private recipeSvc: RecipeService) {
     this.url = 'https://ng-recipe-book-5cc84.firebaseio.com/';
   }
 
