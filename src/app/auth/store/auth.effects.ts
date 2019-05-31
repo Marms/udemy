@@ -50,6 +50,14 @@ export class AuthEffects {
       ];
     });
 
+  @Effect({dispatch: false})
+  authLogout = this.action$
+    .pipe(ofType(AuthActions.LOGOUT))
+    .do(() => {
+        this.router.navigate(['/']);
+      }
+    );
+
   constructor(private action$: Actions, private router: Router) {
 
   }
