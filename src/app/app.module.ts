@@ -13,6 +13,9 @@ import {BsDropdownModule} from 'ngx-bootstrap';
 import {reducers} from './store/app.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './auth/store/auth.effects';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,12 @@ import {AuthEffects} from './auth/store/auth.effects';
     CoreModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([AuthEffects]),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    StoreRouterConnectingModule,
+    !environment.production ? StoreDevtoolsModule.instrument(): []
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

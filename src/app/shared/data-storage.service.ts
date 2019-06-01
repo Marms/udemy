@@ -11,7 +11,7 @@ export class DataStorageService {
 
   constructor(private httpClient: HttpClient,
               private recipeSvc: RecipeService) {
-    this.url = 'https://ng-recipe-book-5cc84.firebaseio.com/';
+    this.url = 'https://ng-recipeState-book-5cc84.firebaseio.com/';
   }
 
   saveRecipes() {

@@ -13,7 +13,10 @@ export class SigninComponent implements OnInit {
 
   constructor(private  store: Store<fromApp.AppState>) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(new fromAuth.TrySignin({username: 'test@test.fr', password: 'test59'}));
+
+  }
 
   onSubmit(f: NgForm) {
     const password = f.value.password;

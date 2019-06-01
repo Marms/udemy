@@ -10,6 +10,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RecipesRoutingModule} from './recipes-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {BsDropdownModule} from 'ngx-bootstrap';
+import {StoreModule} from '@ngrx/store';
+import {recipeReducers} from './store/recipe.reducers';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import {BsDropdownModule} from 'ngx-bootstrap';
     ReactiveFormsModule,
     RecipesRoutingModule,
     SharedModule,
-    BsDropdownModule
+    BsDropdownModule,
+    StoreModule.forFeature('recipes', recipeReducers)
   ]
 })
 export class RecipesModule {
