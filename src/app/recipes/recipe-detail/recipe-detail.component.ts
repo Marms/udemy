@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {RecipeService} from '../recipe.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {Store} from '@ngrx/store';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
@@ -16,7 +15,7 @@ import {Observable} from 'rxjs';
 export class RecipeDetailComponent implements OnInit {
   recipeState: Observable<fromRecipe.State>;
   id: number;
-  constructor(private recSvc: RecipeService,
+  constructor(
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private store: Store<fromRecipe.FeatureState>) {

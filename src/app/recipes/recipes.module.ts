@@ -12,6 +12,8 @@ import {SharedModule} from '../shared/shared.module';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {StoreModule} from '@ngrx/store';
 import {recipeReducers} from './store/recipe.reducers';
+import {EffectsModule} from '@ngrx/effects';
+import {RecipeEffects} from './store/recipe.effects';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {recipeReducers} from './store/recipe.reducers';
     RecipesRoutingModule,
     SharedModule,
     BsDropdownModule,
-    StoreModule.forFeature('recipes', recipeReducers)
+    StoreModule.forFeature('recipes', recipeReducers),
+    EffectsModule.forFeature([RecipeEffects])
   ]
 })
 export class RecipesModule {
