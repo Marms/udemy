@@ -9,7 +9,9 @@ export const SET_TOKEN = 'SET_TOKEN';
 
 export class TrySignin implements Action {
   readonly type = TRY_SIGNIN;
-  constructor (public payload: {username: string, password: string}) {}
+
+  constructor(public payload: { username: string, password: string }) {
+  }
 }
 
 export class TrySignup implements Action {

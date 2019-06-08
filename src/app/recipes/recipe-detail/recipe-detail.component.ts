@@ -5,6 +5,7 @@ import * as ShoppingListActions from '../../shopping-list/store/shopping-list.ac
 import * as fromRecipe from '../store/recipe.reducers';
 import * as RecipeActions from '../store/recipe.actions';
 import {Observable} from 'rxjs';
+import {take} from 'rxjs/operators';
 
 
 @Component({
@@ -15,10 +16,11 @@ import {Observable} from 'rxjs';
 export class RecipeDetailComponent implements OnInit {
   recipeState: Observable<fromRecipe.State>;
   id: number;
+
   constructor(
-              private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private store: Store<fromRecipe.FeatureState>) {
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private store: Store<fromRecipe.FeatureState>) {
   }
 
   ngOnInit() {
@@ -38,7 +40,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onAddToShoppingList() {
     this.store.select('recipes')
-      .take(1)
+      .pipe(take(1))
       .subscribe(
         (recipeState: fromRecipe.State) => {
           console.log(recipeState.recipes[this.id]);

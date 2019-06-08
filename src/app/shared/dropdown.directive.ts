@@ -1,4 +1,4 @@
-import {Renderer2, TemplateRef, ViewContainerRef, Input, ElementRef, HostListener, HostBinding, Directive} from '@angular/core';
+import {Renderer2, ElementRef, HostListener, HostBinding, Directive} from '@angular/core';
 
 
 @Directive({

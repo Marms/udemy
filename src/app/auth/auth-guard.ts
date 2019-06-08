@@ -3,6 +3,7 @@ import * as fromApp from '../store/app.reducer';
 import * as fromAuth from './store/auth.reducer';
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {map, take} from 'rxjs/operators';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanLoad {
@@ -23,10 +24,11 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   getAuthenticated() {
     return this.store.select('auth')
-      .take(1)
-      .map((authState: fromAuth.State) => {
-      console.log(authState.authenticated);
-      return authState.authenticated;
-    });
+      .pipe(
+        take(1),
+        map((authState: fromAuth.State) => {
+          console.log(authState.authenticated);
+          return authState.authenticated;
+        }));
   }
 }

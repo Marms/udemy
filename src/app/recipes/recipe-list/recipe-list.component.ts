@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css'],
 })
-export class RecipeListComponent implements OnInit, OnDestroy {
+export class RecipeListComponent implements OnInit {
   recipes: Observable<fromRecipe.State>;
 
   constructor(private store: Store<fromRecipe.FeatureState>,
@@ -23,9 +23,5 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   onNewRecipe() {
     this.router.navigate(['new'], {relativeTo: this.activedRoute});
-  }
-
-  ngOnDestroy() {
-    // this.subscription.unsubscribe();
   }
 }
